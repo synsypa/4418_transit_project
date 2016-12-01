@@ -6,8 +6,8 @@ Project for IEOR 4418 Transportation Analytics
 
 `taxi_load.py`: Loads .csv files of NYC taxi pickups/dropoffs for April 2015
 
-`taxi_cluster.py`: Use K-means clustering to designate areas of interest, Assume a single pickup is representative of some set transit demand. Cluster on Location, Passengers, Trip Distance. Produces a dataset of Cluster, Centroid (Location only), Pickups in Cluster 
+`taxi_cluster.py`: Use K-means clustering to designate areas of interest, Assume a single pickup is representative of some set transit demand, clusters denote an area of demand. Produces a dataset of Cluster, Centroid (Location only), Pickups in Cluster 
 
 ## Model (Subject to Change)
 For each 2 hour segment:
-Citibike Pickups = B\_1\*Temperature + B\_2\*Precipitation + B\_3\*Cluster + B\_4\*Taxi Demand in Cluster
+Citibike Pickups = B\_1\*Temperature + B\_2\*Precipitation + B\_3\*DayOfWeek + B\_4\*Taxi Demand in Cluster
