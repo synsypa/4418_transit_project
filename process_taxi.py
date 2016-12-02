@@ -39,16 +39,12 @@ df = pd.read_sql_query(query, con)
 
 # Get Day and Weekday vars
 df['day'] = pd.to_datetime(df['p_datetime'], format='%Y-%m-%d %H:%M:%S').dt.day
-df['weekend'] = np.where(
-                        pd.to_datetime(df['p_datetime'], 
-                                        format='%Y-%m-%d %H:%M:%S').dt.weekday <= 5
-                , 0, 1)
 
 # Assign Clusters
 df['cluster'] = df.apply(assign_clu, axis=1)
 
 # Collapse by Cluster
-agg_funcs = {'num_pass':np.sum, 'dist':np.mean, 'weekend':np.mean}
+agg_funcs = {'num_pass':np.sum, 'dist':np.mean}
 grouped = df.groupby(['day', 'cluster']).agg(agg_funcs).reset_index()
 
 # Save to Pickle for easy access
@@ -79,18 +75,14 @@ query = """
         """
 df = pd.read_sql_query(query, con)
 
-# Get Day and Weekday vars
+# Get Day vars
 df['day'] = pd.to_datetime(df['p_datetime'], format='%Y-%m-%d %H:%M:%S').dt.day
-df['weekend'] = np.where(
-                        pd.to_datetime(df['p_datetime'], 
-                                        format='%Y-%m-%d %H:%M:%S').dt.weekday <= 5
-                , 0, 1)
 
 # Assign Clusters
 df['cluster'] = df.apply(assign_clu, axis=1)
 
 # Collapse by Cluster
-agg_funcs = {'num_pass':np.sum, 'dist':np.mean, 'weekend':np.mean}
+agg_funcs = {'num_pass':np.sum, 'dist':np.mean}
 grouped = df.groupby(['day', 'cluster']).agg(agg_funcs).reset_index()
 
 # Save to Pickle for easy access
@@ -121,18 +113,14 @@ query = """
         """
 df = pd.read_sql_query(query, con)
 
-# Get Day and Weekday vars
+# Get Day vars
 df['day'] = pd.to_datetime(df['p_datetime'], format='%Y-%m-%d %H:%M:%S').dt.day
-df['weekend'] = np.where(
-                        pd.to_datetime(df['p_datetime'], 
-                                        format='%Y-%m-%d %H:%M:%S').dt.weekday <= 5
-                , 0, 1)
 
 # Assign Clusters
 df['cluster'] = df.apply(assign_clu, axis=1)
 
 # Collapse by Cluster
-agg_funcs = {'num_pass':np.sum, 'dist':np.mean, 'weekend':np.mean}
+agg_funcs = {'num_pass':np.sum, 'dist':np.mean}
 grouped = df.groupby(['day', 'cluster']).agg(agg_funcs).reset_index()
 
 # Save to Pickle for easy access
@@ -163,18 +151,14 @@ query = """
         """
 df = pd.read_sql_query(query, con)
 
-# Get Day and Weekday vars
+# Get Day vars
 df['day'] = pd.to_datetime(df['p_datetime'], format='%Y-%m-%d %H:%M:%S').dt.day
-df['weekend'] = np.where(
-                        pd.to_datetime(df['p_datetime'], 
-                                        format='%Y-%m-%d %H:%M:%S').dt.weekday <= 5
-                , 0, 1)
 
 # Assign Clusters
 df['cluster'] = df.apply(assign_clu, axis=1)
 
 # Collapse by Cluster
-agg_funcs = {'num_pass':np.sum, 'dist':np.mean, 'weekend':np.mean}
+agg_funcs = {'num_pass':np.sum, 'dist':np.mean}
 grouped = df.groupby(['day', 'cluster']).agg(agg_funcs).reset_index()
 
 # Save to Pickle for easy access
@@ -205,18 +189,14 @@ query = """
         """
 df = pd.read_sql_query(query, con)
 
-# Get Day and Weekday vars
+# Get Day vars
 df['day'] = pd.to_datetime(df['p_datetime'], format='%Y-%m-%d %H:%M:%S').dt.day
-df['weekend'] = np.where(
-                        pd.to_datetime(df['p_datetime'], 
-                                        format='%Y-%m-%d %H:%M:%S').dt.weekday <= 5
-                , 0, 1)
 
 # Assign Clusters
 df['cluster'] = df.apply(assign_clu, axis=1)
 
 # Collapse by Cluster
-agg_funcs = {'num_pass':np.sum, 'dist':np.mean, 'weekend':np.mean}
+agg_funcs = {'num_pass':np.sum, 'dist':np.mean}
 grouped = df.groupby(['day', 'cluster']).agg(agg_funcs).reset_index()
 
 # Save to Pickle for easy access
@@ -247,18 +227,14 @@ query = """
         """
 df = pd.read_sql_query(query, con)
 
-# Get Day and Weekday vars
+# Get Day vars
 df['day'] = pd.to_datetime(df['p_datetime'], format='%Y-%m-%d %H:%M:%S').dt.day
-df['weekend'] = np.where(
-                        pd.to_datetime(df['p_datetime'], 
-                                        format='%Y-%m-%d %H:%M:%S').dt.weekday <= 5
-                , 0, 1)
 
 # Assign Clusters
 df['cluster'] = df.apply(assign_clu, axis=1)
 
 # Collapse by Cluster
-agg_funcs = {'num_pass':np.sum, 'dist':np.mean, 'weekend':np.mean}
+agg_funcs = {'num_pass':np.sum, 'dist':np.mean}
 grouped = df.groupby(['day', 'cluster']).agg(agg_funcs).reset_index()
 
 # Save to Pickle for easy access
@@ -289,18 +265,14 @@ query = """
         """
 df = pd.read_sql_query(query, con)
 
-# Get Day and Weekday vars
+# Get Day vars
 df['day'] = pd.to_datetime(df['p_datetime'], format='%Y-%m-%d %H:%M:%S').dt.day
-df['weekend'] = np.where(
-                        pd.to_datetime(df['p_datetime'], 
-                                        format='%Y-%m-%d %H:%M:%S').dt.weekday <= 5
-                , 0, 1)
 
 # Assign Clusters
 df['cluster'] = df.apply(assign_clu, axis=1)
 
 # Collapse by Cluster
-agg_funcs = {'num_pass':np.sum, 'dist':np.mean, 'weekend':np.mean}
+agg_funcs = {'num_pass':np.sum, 'dist':np.mean}
 grouped = df.groupby(['day', 'cluster']).agg(agg_funcs).reset_index()
 
 # Save to Pickle for easy access
@@ -331,18 +303,14 @@ query = """
         """
 df = pd.read_sql_query(query, con)
 
-# Get Day and Weekday vars
+# Get Day vars
 df['day'] = pd.to_datetime(df['p_datetime'], format='%Y-%m-%d %H:%M:%S').dt.day
-df['weekend'] = np.where(
-                        pd.to_datetime(df['p_datetime'], 
-                                        format='%Y-%m-%d %H:%M:%S').dt.weekday <= 5
-                , 0, 1)
 
 # Assign Clusters
 df['cluster'] = df.apply(assign_clu, axis=1)
 
 # Collapse by Cluster
-agg_funcs = {'num_pass':np.sum, 'dist':np.mean, 'weekend':np.mean}
+agg_funcs = {'num_pass':np.sum, 'dist':np.mean}
 grouped = df.groupby(['day', 'cluster']).agg(agg_funcs).reset_index()
 
 # Save to Pickle for easy access
@@ -373,18 +341,14 @@ query = """
         """
 df = pd.read_sql_query(query, con)
 
-# Get Day and Weekday vars
+# Get Day vars
 df['day'] = pd.to_datetime(df['p_datetime'], format='%Y-%m-%d %H:%M:%S').dt.day
-df['weekend'] = np.where(
-                        pd.to_datetime(df['p_datetime'], 
-                                        format='%Y-%m-%d %H:%M:%S').dt.weekday <= 5
-                , 0, 1)
 
 # Assign Clusters
 df['cluster'] = df.apply(assign_clu, axis=1)
 
 # Collapse by Cluster
-agg_funcs = {'num_pass':np.sum, 'dist':np.mean, 'weekend':np.mean}
+agg_funcs = {'num_pass':np.sum, 'dist':np.mean}
 grouped = df.groupby(['day', 'cluster']).agg(agg_funcs).reset_index()
 
 # Save to Pickle for easy access
@@ -415,18 +379,14 @@ query = """
         """
 df = pd.read_sql_query(query, con)
 
-# Get Day and Weekday vars
+# Get Day vars
 df['day'] = pd.to_datetime(df['p_datetime'], format='%Y-%m-%d %H:%M:%S').dt.day
-df['weekend'] = np.where(
-                        pd.to_datetime(df['p_datetime'], 
-                                        format='%Y-%m-%d %H:%M:%S').dt.weekday <= 5
-                , 0, 1)
 
 # Assign Clusters
 df['cluster'] = df.apply(assign_clu, axis=1)
 
 # Collapse by Cluster
-agg_funcs = {'num_pass':np.sum, 'dist':np.mean, 'weekend':np.mean}
+agg_funcs = {'num_pass':np.sum, 'dist':np.mean}
 grouped = df.groupby(['day', 'cluster']).agg(agg_funcs).reset_index()
 
 # Save to Pickle for easy access
@@ -457,18 +417,14 @@ query = """
         """
 df = pd.read_sql_query(query, con)
 
-# Get Day and Weekday vars
+# Get Day vars
 df['day'] = pd.to_datetime(df['p_datetime'], format='%Y-%m-%d %H:%M:%S').dt.day
-df['weekend'] = np.where(
-                        pd.to_datetime(df['p_datetime'], 
-                                        format='%Y-%m-%d %H:%M:%S').dt.weekday <= 5
-                , 0, 1)
 
 # Assign Clusters
 df['cluster'] = df.apply(assign_clu, axis=1)
 
 # Collapse by Cluster
-agg_funcs = {'num_pass':np.sum, 'dist':np.mean, 'weekend':np.mean}
+agg_funcs = {'num_pass':np.sum, 'dist':np.mean}
 grouped = df.groupby(['day', 'cluster']).agg(agg_funcs).reset_index()
 
 # Save to Pickle for easy access
@@ -497,18 +453,14 @@ query = """
         """
 df = pd.read_sql_query(query, con)
 
-# Get Day and Weekday vars
+# Get Day vars
 df['day'] = pd.to_datetime(df['p_datetime'], format='%Y-%m-%d %H:%M:%S').dt.day
-df['weekend'] = np.where(
-                        pd.to_datetime(df['p_datetime'], 
-                                        format='%Y-%m-%d %H:%M:%S').dt.weekday <= 5
-                , 0, 1)
 
 # Assign Clusters
 df['cluster'] = df.apply(assign_clu, axis=1)
 
 # Collapse by Cluster
-agg_funcs = {'num_pass':np.sum, 'dist':np.mean, 'weekend':np.mean}
+agg_funcs = {'num_pass':np.sum, 'dist':np.mean}
 grouped = df.groupby(['day', 'cluster']).agg(agg_funcs).reset_index()
 
 # Save to Pickle for easy access
