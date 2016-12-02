@@ -15,6 +15,7 @@ query = """
         AND lon <= -73.89 AND lon >= -74.02
         AND lat <= 40.84 AND lat >= 40.70
         AND dist < 10
+        AND num_pass < 3
         UNION ALL
         SELECT p_datetime, p_long as lon, p_lat as lat, num_pass, dist
         FROM green
@@ -22,24 +23,28 @@ query = """
         AND lon <= -73.89 AND lon >= -74.02
         AND lat <= 40.84 AND lat >= 40.70
         AND dist < 10
+        AND num_pass < 3
         """
 df = pd.read_sql_query(query, con)
 con.close()
+
+# Pickle Dataframe for faster access
+df.to_pickle("taxi_data.pkl")
 
 # Cluster on lat/lon
 cl_df = df[['lon', 'lat']]
 
 # Find good k using silhouette score
-k_range = range(20,50)
+#k_range = range(20,50)
 
-for k in k_range:
-    km_checks = KMeans(n_clusters = k, init='k-means++', n_jobs=2)
-    cluster_lab = km_checks.fit_predict(cl_df)
-    silhouette_avg = silhouette_score(cl_df, cluster_lab, sample_size=1000)
-    print("For n_clusters =", k,
-          "The average silhouette_score is :", silhouette_avg)
+#for k in k_range:
+#    km_checks = KMeans(n_clusters = k, init='k-means++', n_jobs=2)
+#    cluster_lab = km_checks.fit_predict(cl_df)
+#    silhouette_avg = silhouette_score(cl_df, cluster_lab, sample_size=1000)
+#    print("For n_clusters =", k,
+#          "The average silhouette_score is :", silhouette_avg)
 
 # Cluster and create dataset of center of each cluster
-km = KMeans(n_clusters = 34, init='k-means++', n_jobs=2)
+km = KMeans(n_clusters = 45, init='k-means++', n_jobs=2)
 clusters = km.fit(cl_df) 
 np.savetxt('cluster_centers.csv', clusters.cluster_centers_, delimiter=",")
