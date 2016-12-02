@@ -19,8 +19,7 @@ coords = cl_df.as_matrix(columns=['lon', 'lat'])
 mi_rad = 3958.76133381 # Miles per Radian on Earth
 epsilon = 5 / mi_rad # Min Distance between Points
 
-db = DBSCAN(eps=epsilon, min_samples=6,
-            algorithm='ball_tree', metric='haversine').fit(np.radians(coords))
+db = DBSCAN(eps=epsilon, min_samples=6, algorithm='ball_tree', metric='haversine').fit(np.radians(coords))
 
 cl_labels = db.labels_
 num_clusters = len(set(cl_labels))
@@ -36,4 +35,4 @@ centermost_points = clusters.map(get_centermost_point)
 lats, lons = zip(*centermost_points)
 rep_points = pd.DataFrame({'lon':lons, 'lat':lats})
 
-rep_point.to_csv("db_clusters.csv")
+rep_points.to_csv("db_clusters.csv")
