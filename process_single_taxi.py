@@ -50,7 +50,7 @@ df['cluster'] = df.apply(assign_clu, axis=1)
 
 # Collapse by Cluster
 agg_funcs = {'num_pass':np.sum, 'dist':np.mean, 'weekend':np.mean}
-grouped = df.groupby('day', 'cluster').agg(agg_funcs)
+grouped = df.groupby(['day', 'cluster']).agg(agg_funcs).reset_index()
 
 # Save to Pickle for easy access
 grouped.to_pickle("taxi_0_2.pkl")

@@ -9,6 +9,11 @@ clus = pd.read_csv('cluster_centers.csv', names=['lon', 'lat'])
 clus = clus[['lat', 'lon']] #Switch to Lat/Lon for Geopy
 clu_list = clus.values.tolist()
 
+# Function for finding nearest cluster
+def assign_clu(row):
+    dists = [great_circle([row['lat'], row['lon']], clu).km for clu in clu_list]
+    return dists.index(min(dists))
+
 # Load Taxi Pickups for 12AM to 2AM
 con = sqlite3.connect('taxi.sqlite')
 query = """
@@ -32,17 +37,19 @@ query = """
         """
 df = pd.read_sql_query(query, con)
 
-# Function for finding nearest cluster
-def assign_clu(row):
-    dists = [great_circle([row['lat'], row['lon']], clu).km for clu in clu_list]
-    return dists.index(min(dists))
+# Get Day and Weekday vars
+df['day'] = pd.to_datetime(df['p_datetime'], format='%Y-%m-%d %H:%M:%S').dt.day
+df['weekend'] = np.where(
+                        pd.to_datetime(df['p_datetime'], 
+                                        format='%Y-%m-%d %H:%M:%S').dt.weekday <= 5
+                , 0, 1)
 
 # Assign Clusters
 df['cluster'] = df.apply(assign_clu, axis=1)
 
 # Collapse by Cluster
-agg_funcs = {'num_pass':np.sum, 'dist':np.mean}
-grouped = df.groupby('cluster').agg(agg_funcs)
+agg_funcs = {'num_pass':np.sum, 'dist':np.mean, 'weekend':np.mean}
+grouped = df.groupby(['day', 'cluster']).agg(agg_funcs).reset_index()
 
 # Save to Pickle for easy access
 grouped.to_pickle("taxi_0_2.pkl")
@@ -72,17 +79,19 @@ query = """
         """
 df = pd.read_sql_query(query, con)
 
-# Function for finding nearest cluster
-def assign_clu(row):
-    dists = [great_circle([row['lat'], row['lon']], clu).km for clu in clu_list]
-    return dists.index(min(dists))
+# Get Day and Weekday vars
+df['day'] = pd.to_datetime(df['p_datetime'], format='%Y-%m-%d %H:%M:%S').dt.day
+df['weekend'] = np.where(
+                        pd.to_datetime(df['p_datetime'], 
+                                        format='%Y-%m-%d %H:%M:%S').dt.weekday <= 5
+                , 0, 1)
 
 # Assign Clusters
 df['cluster'] = df.apply(assign_clu, axis=1)
 
 # Collapse by Cluster
-agg_funcs = {'num_pass':np.sum, 'dist':np.mean}
-grouped = df.groupby('cluster').agg(agg_funcs)
+agg_funcs = {'num_pass':np.sum, 'dist':np.mean, 'weekend':np.mean}
+grouped = df.groupby(['day', 'cluster']).agg(agg_funcs).reset_index()
 
 # Save to Pickle for easy access
 grouped.to_pickle("taxi_2_4.pkl")
@@ -112,17 +121,19 @@ query = """
         """
 df = pd.read_sql_query(query, con)
 
-# Function for finding nearest cluster
-def assign_clu(row):
-    dists = [great_circle([row['lat'], row['lon']], clu).km for clu in clu_list]
-    return dists.index(min(dists))
+# Get Day and Weekday vars
+df['day'] = pd.to_datetime(df['p_datetime'], format='%Y-%m-%d %H:%M:%S').dt.day
+df['weekend'] = np.where(
+                        pd.to_datetime(df['p_datetime'], 
+                                        format='%Y-%m-%d %H:%M:%S').dt.weekday <= 5
+                , 0, 1)
 
 # Assign Clusters
 df['cluster'] = df.apply(assign_clu, axis=1)
 
 # Collapse by Cluster
-agg_funcs = {'num_pass':np.sum, 'dist':np.mean}
-grouped = df.groupby('cluster').agg(agg_funcs)
+agg_funcs = {'num_pass':np.sum, 'dist':np.mean, 'weekend':np.mean}
+grouped = df.groupby(['day', 'cluster']).agg(agg_funcs).reset_index()
 
 # Save to Pickle for easy access
 grouped.to_pickle("taxi_4_6.pkl")
@@ -152,17 +163,19 @@ query = """
         """
 df = pd.read_sql_query(query, con)
 
-# Function for finding nearest cluster
-def assign_clu(row):
-    dists = [great_circle([row['lat'], row['lon']], clu).km for clu in clu_list]
-    return dists.index(min(dists))
+# Get Day and Weekday vars
+df['day'] = pd.to_datetime(df['p_datetime'], format='%Y-%m-%d %H:%M:%S').dt.day
+df['weekend'] = np.where(
+                        pd.to_datetime(df['p_datetime'], 
+                                        format='%Y-%m-%d %H:%M:%S').dt.weekday <= 5
+                , 0, 1)
 
 # Assign Clusters
 df['cluster'] = df.apply(assign_clu, axis=1)
 
 # Collapse by Cluster
-agg_funcs = {'num_pass':np.sum, 'dist':np.mean}
-grouped = df.groupby('cluster').agg(agg_funcs)
+agg_funcs = {'num_pass':np.sum, 'dist':np.mean, 'weekend':np.mean}
+grouped = df.groupby(['day', 'cluster']).agg(agg_funcs).reset_index()
 
 # Save to Pickle for easy access
 grouped.to_pickle("taxi_6_8.pkl")
@@ -192,17 +205,19 @@ query = """
         """
 df = pd.read_sql_query(query, con)
 
-# Function for finding nearest cluster
-def assign_clu(row):
-    dists = [great_circle([row['lat'], row['lon']], clu).km for clu in clu_list]
-    return dists.index(min(dists))
+# Get Day and Weekday vars
+df['day'] = pd.to_datetime(df['p_datetime'], format='%Y-%m-%d %H:%M:%S').dt.day
+df['weekend'] = np.where(
+                        pd.to_datetime(df['p_datetime'], 
+                                        format='%Y-%m-%d %H:%M:%S').dt.weekday <= 5
+                , 0, 1)
 
 # Assign Clusters
 df['cluster'] = df.apply(assign_clu, axis=1)
 
 # Collapse by Cluster
-agg_funcs = {'num_pass':np.sum, 'dist':np.mean}
-grouped = df.groupby('cluster').agg(agg_funcs)
+agg_funcs = {'num_pass':np.sum, 'dist':np.mean, 'weekend':np.mean}
+grouped = df.groupby(['day', 'cluster']).agg(agg_funcs).reset_index()
 
 # Save to Pickle for easy access
 grouped.to_pickle("taxi_8_10.pkl")
@@ -232,17 +247,19 @@ query = """
         """
 df = pd.read_sql_query(query, con)
 
-# Function for finding nearest cluster
-def assign_clu(row):
-    dists = [great_circle([row['lat'], row['lon']], clu).km for clu in clu_list]
-    return dists.index(min(dists))
+# Get Day and Weekday vars
+df['day'] = pd.to_datetime(df['p_datetime'], format='%Y-%m-%d %H:%M:%S').dt.day
+df['weekend'] = np.where(
+                        pd.to_datetime(df['p_datetime'], 
+                                        format='%Y-%m-%d %H:%M:%S').dt.weekday <= 5
+                , 0, 1)
 
 # Assign Clusters
 df['cluster'] = df.apply(assign_clu, axis=1)
 
 # Collapse by Cluster
-agg_funcs = {'num_pass':np.sum, 'dist':np.mean}
-grouped = df.groupby('cluster').agg(agg_funcs)
+agg_funcs = {'num_pass':np.sum, 'dist':np.mean, 'weekend':np.mean}
+grouped = df.groupby(['day', 'cluster']).agg(agg_funcs).reset_index()
 
 # Save to Pickle for easy access
 grouped.to_pickle("taxi_10_12.pkl")
@@ -272,17 +289,19 @@ query = """
         """
 df = pd.read_sql_query(query, con)
 
-# Function for finding nearest cluster
-def assign_clu(row):
-    dists = [great_circle([row['lat'], row['lon']], clu).km for clu in clu_list]
-    return dists.index(min(dists))
+# Get Day and Weekday vars
+df['day'] = pd.to_datetime(df['p_datetime'], format='%Y-%m-%d %H:%M:%S').dt.day
+df['weekend'] = np.where(
+                        pd.to_datetime(df['p_datetime'], 
+                                        format='%Y-%m-%d %H:%M:%S').dt.weekday <= 5
+                , 0, 1)
 
 # Assign Clusters
 df['cluster'] = df.apply(assign_clu, axis=1)
 
 # Collapse by Cluster
-agg_funcs = {'num_pass':np.sum, 'dist':np.mean}
-grouped = df.groupby('cluster').agg(agg_funcs)
+agg_funcs = {'num_pass':np.sum, 'dist':np.mean, 'weekend':np.mean}
+grouped = df.groupby(['day', 'cluster']).agg(agg_funcs).reset_index()
 
 # Save to Pickle for easy access
 grouped.to_pickle("taxi_12_14.pkl")
@@ -312,17 +331,19 @@ query = """
         """
 df = pd.read_sql_query(query, con)
 
-# Function for finding nearest cluster
-def assign_clu(row):
-    dists = [great_circle([row['lat'], row['lon']], clu).km for clu in clu_list]
-    return dists.index(min(dists))
+# Get Day and Weekday vars
+df['day'] = pd.to_datetime(df['p_datetime'], format='%Y-%m-%d %H:%M:%S').dt.day
+df['weekend'] = np.where(
+                        pd.to_datetime(df['p_datetime'], 
+                                        format='%Y-%m-%d %H:%M:%S').dt.weekday <= 5
+                , 0, 1)
 
 # Assign Clusters
 df['cluster'] = df.apply(assign_clu, axis=1)
 
 # Collapse by Cluster
-agg_funcs = {'num_pass':np.sum, 'dist':np.mean}
-grouped = df.groupby('cluster').agg(agg_funcs)
+agg_funcs = {'num_pass':np.sum, 'dist':np.mean, 'weekend':np.mean}
+grouped = df.groupby(['day', 'cluster']).agg(agg_funcs).reset_index()
 
 # Save to Pickle for easy access
 grouped.to_pickle("taxi_14_16.pkl")
@@ -352,17 +373,19 @@ query = """
         """
 df = pd.read_sql_query(query, con)
 
-# Function for finding nearest cluster
-def assign_clu(row):
-    dists = [great_circle([row['lat'], row['lon']], clu).km for clu in clu_list]
-    return dists.index(min(dists))
+# Get Day and Weekday vars
+df['day'] = pd.to_datetime(df['p_datetime'], format='%Y-%m-%d %H:%M:%S').dt.day
+df['weekend'] = np.where(
+                        pd.to_datetime(df['p_datetime'], 
+                                        format='%Y-%m-%d %H:%M:%S').dt.weekday <= 5
+                , 0, 1)
 
 # Assign Clusters
 df['cluster'] = df.apply(assign_clu, axis=1)
 
 # Collapse by Cluster
-agg_funcs = {'num_pass':np.sum, 'dist':np.mean}
-grouped = df.groupby('cluster').agg(agg_funcs)
+agg_funcs = {'num_pass':np.sum, 'dist':np.mean, 'weekend':np.mean}
+grouped = df.groupby(['day', 'cluster']).agg(agg_funcs).reset_index()
 
 # Save to Pickle for easy access
 grouped.to_pickle("taxi_16_18.pkl")
@@ -392,17 +415,19 @@ query = """
         """
 df = pd.read_sql_query(query, con)
 
-# Function for finding nearest cluster
-def assign_clu(row):
-    dists = [great_circle([row['lat'], row['lon']], clu).km for clu in clu_list]
-    return dists.index(min(dists))
+# Get Day and Weekday vars
+df['day'] = pd.to_datetime(df['p_datetime'], format='%Y-%m-%d %H:%M:%S').dt.day
+df['weekend'] = np.where(
+                        pd.to_datetime(df['p_datetime'], 
+                                        format='%Y-%m-%d %H:%M:%S').dt.weekday <= 5
+                , 0, 1)
 
 # Assign Clusters
 df['cluster'] = df.apply(assign_clu, axis=1)
 
 # Collapse by Cluster
-agg_funcs = {'num_pass':np.sum, 'dist':np.mean}
-grouped = df.groupby('cluster').agg(agg_funcs)
+agg_funcs = {'num_pass':np.sum, 'dist':np.mean, 'weekend':np.mean}
+grouped = df.groupby(['day', 'cluster']).agg(agg_funcs).reset_index()
 
 # Save to Pickle for easy access
 grouped.to_pickle("taxi_18_20.pkl")
@@ -432,17 +457,19 @@ query = """
         """
 df = pd.read_sql_query(query, con)
 
-# Function for finding nearest cluster
-def assign_clu(row):
-    dists = [great_circle([row['lat'], row['lon']], clu).km for clu in clu_list]
-    return dists.index(min(dists))
+# Get Day and Weekday vars
+df['day'] = pd.to_datetime(df['p_datetime'], format='%Y-%m-%d %H:%M:%S').dt.day
+df['weekend'] = np.where(
+                        pd.to_datetime(df['p_datetime'], 
+                                        format='%Y-%m-%d %H:%M:%S').dt.weekday <= 5
+                , 0, 1)
 
 # Assign Clusters
 df['cluster'] = df.apply(assign_clu, axis=1)
 
 # Collapse by Cluster
-agg_funcs = {'num_pass':np.sum, 'dist':np.mean}
-grouped = df.groupby('cluster').agg(agg_funcs)
+agg_funcs = {'num_pass':np.sum, 'dist':np.mean, 'weekend':np.mean}
+grouped = df.groupby(['day', 'cluster']).agg(agg_funcs).reset_index()
 
 # Save to Pickle for easy access
 grouped.to_pickle("taxi_20_22.pkl")
@@ -470,17 +497,19 @@ query = """
         """
 df = pd.read_sql_query(query, con)
 
-# Function for finding nearest cluster
-def assign_clu(row):
-    dists = [great_circle([row['lat'], row['lon']], clu).km for clu in clu_list]
-    return dists.index(min(dists))
+# Get Day and Weekday vars
+df['day'] = pd.to_datetime(df['p_datetime'], format='%Y-%m-%d %H:%M:%S').dt.day
+df['weekend'] = np.where(
+                        pd.to_datetime(df['p_datetime'], 
+                                        format='%Y-%m-%d %H:%M:%S').dt.weekday <= 5
+                , 0, 1)
 
 # Assign Clusters
 df['cluster'] = df.apply(assign_clu, axis=1)
 
 # Collapse by Cluster
-agg_funcs = {'num_pass':np.sum, 'dist':np.mean}
-grouped = df.groupby('cluster').agg(agg_funcs)
+agg_funcs = {'num_pass':np.sum, 'dist':np.mean, 'weekend':np.mean}
+grouped = df.groupby(['day', 'cluster']).agg(agg_funcs).reset_index()
 
 # Save to Pickle for easy access
 grouped.to_pickle("taxi_22_24.pkl")
