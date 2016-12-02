@@ -14,6 +14,8 @@ Project for IEOR 4418 Transportation Analytics
 
 `process_weather.py`: Condenses weather data into 2 hour intervals. Output Dataframe is [day, interval, temp_f, humidity, precipitation_in] 
 
+`process_bike.py`: Merges Bike Station location with demand datat and assigns cluster. Output Dataframe is [day, interval, cluster, pickups, weekday/end] 
+
 `venv/dbscan.clu.py`: NOT IN USE. Implements DBSCAN clustering on taxi pickups using Virtual Env and sklearn version 0.15.2's implementation. Incomplete, not working.
 
 ## Model (Subject to Change)
