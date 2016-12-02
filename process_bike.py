@@ -27,5 +27,5 @@ bike_df['cluster'] = bike_df.apply(assign_clu, axis=1)
 
 # Groupby day/interval
 agg_funcs = {'pick':np.sum, 'drop':np.sum, 'weekday':np.mean}
-grouped = w_df.groupby(['day', 'interval']).agg(agg_funcs).reset_index()
+grouped = bike_df.groupby(['day', 'interval', 'cluster']).agg(agg_funcs).reset_index()
 grouped.to_pickle("bikes_april.pkl")

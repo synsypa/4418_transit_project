@@ -46,9 +46,10 @@ df['cluster'] = df.apply(assign_clu, axis=1)
 # Collapse by Cluster
 agg_funcs = {'num_pass':np.sum, 'dist':np.mean}
 grouped = df.groupby(['day', 'cluster']).agg(agg_funcs).reset_index()
+grouped['interval'] = 0
 
 # Save to Pickle for easy access
-grouped.to_pickle("taxi_0_2.pkl")
+grouped.to_pickle("taxi_0_2_1.pkl")
 
 print("done1")
 
@@ -84,6 +85,7 @@ df['cluster'] = df.apply(assign_clu, axis=1)
 # Collapse by Cluster
 agg_funcs = {'num_pass':np.sum, 'dist':np.mean}
 grouped = df.groupby(['day', 'cluster']).agg(agg_funcs).reset_index()
+grouped['interval'] = 1
 
 # Save to Pickle for easy access
 grouped.to_pickle("taxi_2_4.pkl")
@@ -122,6 +124,7 @@ df['cluster'] = df.apply(assign_clu, axis=1)
 # Collapse by Cluster
 agg_funcs = {'num_pass':np.sum, 'dist':np.mean}
 grouped = df.groupby(['day', 'cluster']).agg(agg_funcs).reset_index()
+grouped['interval'] = 2
 
 # Save to Pickle for easy access
 grouped.to_pickle("taxi_4_6.pkl")
@@ -160,6 +163,7 @@ df['cluster'] = df.apply(assign_clu, axis=1)
 # Collapse by Cluster
 agg_funcs = {'num_pass':np.sum, 'dist':np.mean}
 grouped = df.groupby(['day', 'cluster']).agg(agg_funcs).reset_index()
+grouped['interval'] = 3
 
 # Save to Pickle for easy access
 grouped.to_pickle("taxi_6_8.pkl")
@@ -198,6 +202,7 @@ df['cluster'] = df.apply(assign_clu, axis=1)
 # Collapse by Cluster
 agg_funcs = {'num_pass':np.sum, 'dist':np.mean}
 grouped = df.groupby(['day', 'cluster']).agg(agg_funcs).reset_index()
+grouped['interval'] = 4
 
 # Save to Pickle for easy access
 grouped.to_pickle("taxi_8_10.pkl")
@@ -236,6 +241,7 @@ df['cluster'] = df.apply(assign_clu, axis=1)
 # Collapse by Cluster
 agg_funcs = {'num_pass':np.sum, 'dist':np.mean}
 grouped = df.groupby(['day', 'cluster']).agg(agg_funcs).reset_index()
+grouped['interval'] = 5
 
 # Save to Pickle for easy access
 grouped.to_pickle("taxi_10_12.pkl")
@@ -274,6 +280,7 @@ df['cluster'] = df.apply(assign_clu, axis=1)
 # Collapse by Cluster
 agg_funcs = {'num_pass':np.sum, 'dist':np.mean}
 grouped = df.groupby(['day', 'cluster']).agg(agg_funcs).reset_index()
+grouped['interval'] = 6
 
 # Save to Pickle for easy access
 grouped.to_pickle("taxi_12_14.pkl")
@@ -312,6 +319,7 @@ df['cluster'] = df.apply(assign_clu, axis=1)
 # Collapse by Cluster
 agg_funcs = {'num_pass':np.sum, 'dist':np.mean}
 grouped = df.groupby(['day', 'cluster']).agg(agg_funcs).reset_index()
+grouped['interval'] = 7
 
 # Save to Pickle for easy access
 grouped.to_pickle("taxi_14_16.pkl")
@@ -350,6 +358,7 @@ df['cluster'] = df.apply(assign_clu, axis=1)
 # Collapse by Cluster
 agg_funcs = {'num_pass':np.sum, 'dist':np.mean}
 grouped = df.groupby(['day', 'cluster']).agg(agg_funcs).reset_index()
+grouped['interval'] = 8
 
 # Save to Pickle for easy access
 grouped.to_pickle("taxi_16_18.pkl")
@@ -388,6 +397,7 @@ df['cluster'] = df.apply(assign_clu, axis=1)
 # Collapse by Cluster
 agg_funcs = {'num_pass':np.sum, 'dist':np.mean}
 grouped = df.groupby(['day', 'cluster']).agg(agg_funcs).reset_index()
+grouped['interval'] = 9
 
 # Save to Pickle for easy access
 grouped.to_pickle("taxi_18_20.pkl")
@@ -426,6 +436,7 @@ df['cluster'] = df.apply(assign_clu, axis=1)
 # Collapse by Cluster
 agg_funcs = {'num_pass':np.sum, 'dist':np.mean}
 grouped = df.groupby(['day', 'cluster']).agg(agg_funcs).reset_index()
+grouped['interval'] = 10
 
 # Save to Pickle for easy access
 grouped.to_pickle("taxi_20_22.pkl")
@@ -462,6 +473,7 @@ df['cluster'] = df.apply(assign_clu, axis=1)
 # Collapse by Cluster
 agg_funcs = {'num_pass':np.sum, 'dist':np.mean}
 grouped = df.groupby(['day', 'cluster']).agg(agg_funcs).reset_index()
+grouped['interval'] = 11
 
 # Save to Pickle for easy access
 grouped.to_pickle("taxi_22_24.pkl")
