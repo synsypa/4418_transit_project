@@ -1,3 +1,9 @@
+'''
+Use K-Means Clustering (k=45) on Taxi Pickup Locations
+To create demand areas for analysis.
+Outputs cluster ID and Lat/Lon of Center
+'''
+
 import sqlite3
 import pandas as pd
 import numpy as np

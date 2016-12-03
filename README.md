@@ -16,6 +16,8 @@ Project for IEOR 4418 Transportation Analytics
 
 `process_bike.py`: Merges Bike Station location with demand datat and assigns cluster. Output Dataframe is [day, interval, cluster, pickups, weekday/end] 
 
+`cut_for_csv.py`: Create .csv files of pickup locations for use in CARTO maps.
+
 `venv/dbscan.clu.py`: NOT IN USE. Implements DBSCAN clustering on taxi pickups using Virtual Env and sklearn version 0.15.2's implementation. Incomplete, not working.
 
 ## Model (Subject to Change)

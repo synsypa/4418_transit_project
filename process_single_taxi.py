@@ -1,3 +1,8 @@
+'''
+Assigns each taxi pickup in 12AM-2AM to a cluster
+Produces ungrouped and grouped by day/cluster
+'''
+
 import sqlite3
 import pandas as pd
 import numpy as np
@@ -44,9 +49,11 @@ df['day'] = pd.to_datetime(df['p_datetime'], format='%Y-%m-%d %H:%M:%S').dt.day
 # Assign Clusters
 df['cluster'] = df.apply(assign_clu, axis=1)
 
+df.to_pickle("ungroup_single.pkl")
+
 # Collapse by Cluster
 agg_funcs = {'num_pass':np.sum, 'dist':np.mean}
 grouped = df.groupby(['day', 'cluster']).agg(agg_funcs).reset_index()
 
 # Save to Pickle for easy access
-grouped.to_pickle("taxi_0_2.pkl")
+grouped.to_pickle("taxi_single.pkl")

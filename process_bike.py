@@ -1,3 +1,8 @@
+'''
+Assigns each bike station to a cluster,
+Produces grouped by day/interval/cluster
+'''
+
 import pandas as pd
 import numpy as np
 from geopy.distance import great_circle

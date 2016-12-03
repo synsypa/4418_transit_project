@@ -1,3 +1,8 @@
+'''
+Assigns each taxi pickup in each 2hr segment to a cluster
+Produces ungrouped and grouped by day/cluster
+'''
+
 import sqlite3
 import pandas as pd
 import numpy as np
@@ -43,13 +48,15 @@ df['day'] = pd.to_datetime(df['p_datetime'], format='%Y-%m-%d %H:%M:%S').dt.day
 # Assign Clusters
 df['cluster'] = df.apply(assign_clu, axis=1)
 
+df.to_pickle("ungroup_0_2.pkl")
+
 # Collapse by Cluster
 agg_funcs = {'num_pass':np.sum, 'dist':np.mean}
 grouped = df.groupby(['day', 'cluster']).agg(agg_funcs).reset_index()
 grouped['interval'] = 0
 
 # Save to Pickle for easy access
-grouped.to_pickle("taxi_0_2_1.pkl")
+grouped.to_pickle("taxi_0_2.pkl")
 
 print("done1")
 
@@ -81,6 +88,8 @@ df['day'] = pd.to_datetime(df['p_datetime'], format='%Y-%m-%d %H:%M:%S').dt.day
 
 # Assign Clusters
 df['cluster'] = df.apply(assign_clu, axis=1)
+
+df.to_pickle("ungroup_2_4.pkl")
 
 # Collapse by Cluster
 agg_funcs = {'num_pass':np.sum, 'dist':np.mean}
@@ -121,6 +130,8 @@ df['day'] = pd.to_datetime(df['p_datetime'], format='%Y-%m-%d %H:%M:%S').dt.day
 # Assign Clusters
 df['cluster'] = df.apply(assign_clu, axis=1)
 
+df.to_pickle("ungroup_4_6.pkl")
+
 # Collapse by Cluster
 agg_funcs = {'num_pass':np.sum, 'dist':np.mean}
 grouped = df.groupby(['day', 'cluster']).agg(agg_funcs).reset_index()
@@ -159,6 +170,8 @@ df['day'] = pd.to_datetime(df['p_datetime'], format='%Y-%m-%d %H:%M:%S').dt.day
 
 # Assign Clusters
 df['cluster'] = df.apply(assign_clu, axis=1)
+
+df.to_pickle("ungroup_6_8.pkl")
 
 # Collapse by Cluster
 agg_funcs = {'num_pass':np.sum, 'dist':np.mean}
@@ -199,6 +212,8 @@ df['day'] = pd.to_datetime(df['p_datetime'], format='%Y-%m-%d %H:%M:%S').dt.day
 # Assign Clusters
 df['cluster'] = df.apply(assign_clu, axis=1)
 
+df.to_pickle("ungroup_8_10.pkl")
+
 # Collapse by Cluster
 agg_funcs = {'num_pass':np.sum, 'dist':np.mean}
 grouped = df.groupby(['day', 'cluster']).agg(agg_funcs).reset_index()
@@ -237,6 +252,8 @@ df['day'] = pd.to_datetime(df['p_datetime'], format='%Y-%m-%d %H:%M:%S').dt.day
 
 # Assign Clusters
 df['cluster'] = df.apply(assign_clu, axis=1)
+
+df.to_pickle("ungroup_10_12.pkl")
 
 # Collapse by Cluster
 agg_funcs = {'num_pass':np.sum, 'dist':np.mean}
@@ -277,6 +294,8 @@ df['day'] = pd.to_datetime(df['p_datetime'], format='%Y-%m-%d %H:%M:%S').dt.day
 # Assign Clusters
 df['cluster'] = df.apply(assign_clu, axis=1)
 
+df.to_pickle("ungroup_12_14.pkl")
+
 # Collapse by Cluster
 agg_funcs = {'num_pass':np.sum, 'dist':np.mean}
 grouped = df.groupby(['day', 'cluster']).agg(agg_funcs).reset_index()
@@ -315,6 +334,8 @@ df['day'] = pd.to_datetime(df['p_datetime'], format='%Y-%m-%d %H:%M:%S').dt.day
 
 # Assign Clusters
 df['cluster'] = df.apply(assign_clu, axis=1)
+
+df.to_pickle("ungroup_14_16.pkl")
 
 # Collapse by Cluster
 agg_funcs = {'num_pass':np.sum, 'dist':np.mean}
@@ -355,6 +376,8 @@ df['day'] = pd.to_datetime(df['p_datetime'], format='%Y-%m-%d %H:%M:%S').dt.day
 # Assign Clusters
 df['cluster'] = df.apply(assign_clu, axis=1)
 
+df.to_pickle("ungroup_16_18.pkl")
+
 # Collapse by Cluster
 agg_funcs = {'num_pass':np.sum, 'dist':np.mean}
 grouped = df.groupby(['day', 'cluster']).agg(agg_funcs).reset_index()
@@ -393,6 +416,8 @@ df['day'] = pd.to_datetime(df['p_datetime'], format='%Y-%m-%d %H:%M:%S').dt.day
 
 # Assign Clusters
 df['cluster'] = df.apply(assign_clu, axis=1)
+
+df.to_pickle("ungroup_18_20.pkl")
 
 # Collapse by Cluster
 agg_funcs = {'num_pass':np.sum, 'dist':np.mean}
@@ -433,6 +458,8 @@ df['day'] = pd.to_datetime(df['p_datetime'], format='%Y-%m-%d %H:%M:%S').dt.day
 # Assign Clusters
 df['cluster'] = df.apply(assign_clu, axis=1)
 
+df.to_pickle("ungroup_20_22.pkl")
+
 # Collapse by Cluster
 agg_funcs = {'num_pass':np.sum, 'dist':np.mean}
 grouped = df.groupby(['day', 'cluster']).agg(agg_funcs).reset_index()
@@ -469,6 +496,8 @@ df['day'] = pd.to_datetime(df['p_datetime'], format='%Y-%m-%d %H:%M:%S').dt.day
 
 # Assign Clusters
 df['cluster'] = df.apply(assign_clu, axis=1)
+
+df.to_pickle("ungroup_22_24.pkl")
 
 # Collapse by Cluster
 agg_funcs = {'num_pass':np.sum, 'dist':np.mean}

@@ -1,3 +1,8 @@
+'''
+Divide April 2015 weather data into 2 hour chunks
+Condense by day/interval
+'''
+
 import pandas as pd
 import numpy as np
 

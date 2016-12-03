@@ -1,8 +1,12 @@
+'''
+This file loads .csv files from NYC Taxi Database
+to SQLite3 Databases for easier access.
+table schemas created in Sqlite3 CLI
+'''
+
 import csv
 import sqlite3
 import pandas as pd
-
-# tables in taxi.sqlite created prior using Sqlite3 CLI
 
 with open('yellow_tripdata_2015-04.csv') as f, sqlite3.connect('taxi.sqlite') as cnx:
     reader = csv.reader(f)
