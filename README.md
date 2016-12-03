@@ -24,6 +24,8 @@ Project for IEOR 4418 Transportation Analytics
 
 `venv/dbscan.clu.py`: NOT IN USE. Implements DBSCAN clustering on taxi pickups using Virtual Env and sklearn version 0.15.2's implementation. Incomplete, not working.
 
+https://kjiang.carto.com/viz/3184256e-b857-11e6-aa3b-0ee66e2c9693/public_map
+
 ## Model (Subject to Change)
 For each 2 hour segment:
 Citibike Pickups = B\_1\*Temperature + B\_2\*Precipitation + B\_3\*Humidity + B\_4\*Weekend + B\_5\*Taxi Demand
