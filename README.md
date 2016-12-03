@@ -18,6 +18,8 @@ Project for IEOR 4418 Transportation Analytics
 
 `cut_for_csv.py`: Create .csv files of pickup locations for use in CARTO maps.
 
+`model_single.py`: Fits a Random Forest, Lasso, and Linear regression to given time interval. Applies Random Forest model to the test point.
+
 `venv/dbscan.clu.py`: NOT IN USE. Implements DBSCAN clustering on taxi pickups using Virtual Env and sklearn version 0.15.2's implementation. Incomplete, not working.
 
 ## Model (Subject to Change)
