@@ -20,6 +20,8 @@ Project for IEOR 4418 Transportation Analytics
 
 `model_single.py`: Fits a Random Forest, Lasso, and Linear regression to given time interval. Applies Random Forest model to the test point.
 
+`predict_pickups.py`: Takes dilled models from `model_single.py` and uses them to predict pickups in clusters without any bike stations. outputs to csv
+
 `venv/dbscan.clu.py`: NOT IN USE. Implements DBSCAN clustering on taxi pickups using Virtual Env and sklearn version 0.15.2's implementation. Incomplete, not working.
 
 ## Model (Subject to Change)
