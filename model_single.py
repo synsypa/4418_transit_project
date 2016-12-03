@@ -7,7 +7,7 @@ Reports Adjusted R^2 and RMSE of each
 
 import pandas as pd
 import numpy as np
-import pylab
+import dill
 
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.linear_model import LinearRegression, LassoCV
@@ -18,7 +18,7 @@ from sklearn.model_selection import cross_val_score, KFold
 from sklearn.metrics import r2_score, mean_squared_error
 
 # Load Data
-taxi_df = pd.read_pickle("taxi_18_20.pkl")
+taxi_df = pd.read_pickle("taxi_6_8.pkl")
 weather_df = pd.read_pickle("weather_april.pkl")
 bike_df = pd.read_pickle("bikes_april.pkl")
 
@@ -37,17 +37,17 @@ df = all_df[['log_bike', 'pick', 'weekday',
 df = df[np.isnan(df['pick'])!=1]
 
 # Plots
-f1 = df.plot(x="log_taxi", y="log_bike", style='o',xlim=(2,9))
-fig1 = f1.get_figure()
-fig1.savefig('logbike_logtaxi.png')
+#f1 = df.plot(x="log_taxi", y="log_bike", style='o',xlim=(2,9))
+#fig1 = f1.get_figure()
+#fig1.savefig('logbike_logtaxi.png')
 
-f2 = df.plot(x="temp_f", y="log_bike", style='o')
-fig2 = f2.get_figure()
-fig2.savefig('logbike_temp.png')
+#f2 = df.plot(x="temp_f", y="log_bike", style='o')
+#fig2 = f2.get_figure()
+#fig2.savefig('logbike_temp.png')
 
-f3 = df.plot(x="dist", y="log_bike", style='o')
-fig3 = f3.get_figure()
-fig3.savefig('logbike_dist.png')
+#f3 = df.plot(x="dist", y="log_bike", style='o')
+#fig3 = f3.get_figure()
+#fig3.savefig('logbike_dist.png')
 
 # Get points with no bike data
 test_df = all_df[['day', 'cluster', 'log_bike', 'pick', 'weekday', 
