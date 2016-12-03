@@ -49,6 +49,13 @@ f3 = df.plot(x="dist", y="log_bike", style='o')
 fig3 = f3.get_figure()
 fig3.savefig('logbike_dist.png')
 
+# Get points with no bike data
+test_df = all_df[['day', 'cluster', 'log_bike', 'pick', 'weekday', 
+             'temp_f', 'precipitation_in', 'humidity',
+             'log_taxi', 'num_pass', 'dist']]
+test_df = test_df[np.isnan(test_df['pick'])==1]
+test_df.to_pickle('to_pred_6_8.pkl')
+
 # Fitting (use metrics on 5 fold CV)
 X_df = df[['weekday', 'dist',
            'temp_f', 'precipitation_in', 'humidity',
@@ -59,7 +66,7 @@ y_df = df['log_bike'].values
 kf = KFold(n_splits=5, random_state=322)
 kf.get_n_splits(X_df)
 
-# Random Forest Model (Parameters tuned by manually)
+# Random Forest Model (Parameters tuned manually)
 rf_pipe = Pipeline([
         ('scale', StandardScaler()),
         ('rf', RandomForestRegressor(random_state=322, min_samples_leaf=3))
@@ -78,20 +85,12 @@ for train_index, test_index in kf.split(X_df):
 adj_r2 = sum(aR2)/5
 rmse = sum(mse)/5
 
-# Apply to point with no stations
-test_df = all_df[['day', 'cluster', 'log_bike', 'pick', 'weekday', 
-             'temp_f', 'precipitation_in', 'humidity',
-             'log_taxi', 'num_pass', 'dist']]
-test_df = test_df[np.isnan(test_df['pick'])==1]
-test_df = test_df[(test_df['cluster']==43) & (test_df['day']==16)]
-test_df = test_df[['weekday', 'dist',
-                       'temp_f', 'precipitation_in', 'humidity',
-                       'log_taxi']]
-test_df['weekday'] = 1.0
+print('Adjusted R^2 = ' + str(adj_r2))
+print('RMSE = ' + str(rmse))
 
-test_point = test_df.values
-rf_mod = rf_pipe.fit(X_df, y_df)
-rf_mod.predict(test_point)
+# Dill the Model
+rf_pipe.fit(X_df, y_df)
+dill.dump(rf_pipe, open('rf_pipe_6_8', 'wb'), recurse=True)
 
 # Lasso CV
 lasso_pipe = Pipeline([
