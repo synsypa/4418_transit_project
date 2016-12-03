@@ -1,3 +1,8 @@
+'''
+Calls Weather Underground API for Hourly Weather Data
+for April 2015
+'''
+
 import requests
 import csv
 import time
