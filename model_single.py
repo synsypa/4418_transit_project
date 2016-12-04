@@ -3,6 +3,8 @@ This file takes a .pkl of taxi pickups in 2 hr intervals
 and merges them with weather and bike data
 Fits Random Forest, Lasso, and Linear Regression Model
 Reports Adjusted R^2 and RMSE of each
+Can be adjusted with the taxi data .pkl for the 2 hr
+interval to be fit
 '''
 
 import pandas as pd
